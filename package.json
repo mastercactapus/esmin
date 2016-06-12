@@ -1,0 +1,14 @@
+{
+  "name": "esmin",
+  "version": "1.0.0",
+  "description": "Utility to minify code targeting ES2015+",
+  "bin": {
+    "esmin": "cli.js"
+  },
+  "author": "Nathan Caza",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.9.1",
+    "commander": "^2.9.0"
+  }
+}
