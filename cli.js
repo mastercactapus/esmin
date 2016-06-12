@@ -20,10 +20,8 @@ if (program.args.length!==1) {
 
 const file = program.args[0]
 
-const plugins = []
-if (program.production) plugins.push(require('./lib/production'))
-require('./lib/simplify')
-if (program.mangle) plugins.push(require('./lib/mangle'))
+const plugins = [require('./lib/simplify')(program)]
+// if (program.mangle) plugins.push(require('./lib/mangle'))
 
 
 const { code, map } = babel.transformFileSync(file, {
