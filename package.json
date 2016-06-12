@@ -5,6 +5,7 @@
   "bin": {
     "esmin": "cli.js"
   },
+  "keywords": ["minify", "minifier", "es6", "es2015"],
   "author": "Nathan Caza",
   "license": "ISC",
   "dependencies": {
