@@ -2,3 +2,4 @@
 
 // @license keep
 
+// @preserve tricky */ something

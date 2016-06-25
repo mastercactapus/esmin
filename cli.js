@@ -35,7 +35,13 @@ const { code, map, ast } = babel.transformFileSync(file, {
 })
 
 var comments = ast.comments.filter(c=>c.value.includes("@license")||c.value.includes("@preserve"));
-const data = comments.map(c=>"/" + "*" + c.value + "*/\n").join("") + code;
+const data = comments.map(c=>{
+	if (c.type==="CommentLine") {
+		return "//" + c.value + "\n"
+	} else {
+		return "/*" + c.value + "*/\n"
+	}
+}).join("") + code;
 
 if (program.output) {
 	fs.writeFileSync(program.output, data)
