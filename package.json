@@ -2,6 +2,9 @@
   "name": "esmin",
   "version": "1.0.1",
   "description": "Utility to minify code targeting ES2015+",
+  "scripts": {
+    "test": "./test.sh"
+  },
   "bin": {
     "esmin": "cli.js"
   },
