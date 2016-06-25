@@ -1,0 +1,4 @@
+// strip
+
+// @license keep
+

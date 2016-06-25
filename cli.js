@@ -24,20 +24,23 @@ const plugins = [require('./lib/simplify')(program)]
 // if (program.mangle) plugins.push(require('./lib/mangle'))
 
 
-const { code, map } = babel.transformFileSync(file, {
+const { code, map, ast } = babel.transformFileSync(file, {
 	babelrc: false,
 	compact: true,
 	minified: true,
 	comments: false,
-	ast: false,
+	ast: true,
 	sourceMaps: program.sourceMap === 'inline' ? 'inline' : !!program.sourceMap,
 	plugins: plugins
 })
 
+var comments = ast.comments.filter(c=>c.value.includes("@license")||c.value.includes("@preserve"));
+const data = comments.map(c=>"/" + "*" + c.value + "*/\n").join("") + code;
+
 if (program.output) {
-	fs.writeFileSync(program.output, code)
+	fs.writeFileSync(program.output, data)
 } else {
-	console.log(code)
+	console.log(data)
 }
 
 if (program.sourceMap && program.sourceMap !== 'inline') {

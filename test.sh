@@ -31,8 +31,10 @@ function must_omit {
 }
 
 must_omit "unreachable" "" "unreachable()" "strip unreachable code"
-
 must_find "production" "" "debug()" "'-p' off by default"
 must_omit "production" "-p" "debug()" "-p mode"
 must_omit "production" "--production" "debug()" "--production mode"
 must_omit "recursive" "" "unreachable()" "recursive logic"
+must_omit "useless" "" "1337" "remove useless statements"
+must_omit "comments" "" "strip" "remove comments"
+must_find "comments" "" "license" "preserve license comments"
